@@ -24,17 +24,17 @@
 
                         <div class="header-btn m-1">
                             <h:form>
-                                <h:commandLink rendered="#{userBean.loggedIn}" action="#{userBean.logoutUser}" styleClass="btn btn-primary btn-sm" value="Logout"/>
+                                <h:commandLink rendered="#{userBean.loggedIn}" action="#{userBean.logoutUser}" styleClass="btn btn-primary btn-sm" value="Déconnecter"/>
                             </h:form>
                         </div>
                         <div class="header-btn m-1">
                             <h:form>
-                                <h:commandLink rendered="#{!userBean.loggedIn}" action="/login.xhtml?faces-redirect=true" styleClass="btn btn-primary btn-sm" value="Login"/>
+                                <h:commandLink rendered="#{!userBean.loggedIn}" action="/login.xhtml?faces-redirect=true" styleClass="btn btn-primary btn-sm" value="Se connecter"/>
                             </h:form>
                         </div>
                         <div class="header-btn m-1">
                             <h:form>
-                                <h:commandLink rendered="#{!userBean.loggedIn}" action="/register.xhtml?faces-redirect=true" styleClass="btn btn-primary btn-sm" value="Register"/>
+                                <h:commandLink rendered="#{!userBean.loggedIn}" action="/register.xhtml?faces-redirect=true" styleClass="btn btn-primary btn-sm" value="S'inscrir"/>
                             </h:form>
                         </div>
 
