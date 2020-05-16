@@ -7,7 +7,7 @@
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
-            <from-action>#{loginBean.validateUserLogin}</from-action>
+            <from-action>#{userBean.validateUserLogin}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/success.xhtml</to-view-id>
         </navigation-case>
@@ -15,7 +15,7 @@
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
-            <from-action>#{loginBean.validateUserLogin}</from-action>
+            <from-action>#{userBean.validateUserLogin}</from-action>
             <from-outcome>login</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
         </navigation-case>

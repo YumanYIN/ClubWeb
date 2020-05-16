@@ -4,19 +4,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:include src="head.xhtml" />
 <h:body>
     <ui:include src="nav.xhtml" />
     <div class="container">
-        <h3 class="text-center">User Login</h3>
+        <h3 class="text-center">User Register</h3>
         <br />
-        <h:form styleClass="col-lg-6" id="loginForm">
+        <h:form styleClass="col-lg-6">
             <div class="form-group row">
                 <label class="col-sm-3">Username</label>
                 <div class="col-sm-9">
                     <h:inputText styleClass="form-control" value="#{userBean.user.userName}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3">Email</label>
+                <div class="col-sm-9">
+                    <h:inputText styleClass="form-control" value="#{userBean.user.email}"/>
                 </div>
             </div>
             <div class="form-group row">
@@ -26,9 +31,10 @@
                 </div>
             </div>
             <div class="form-group row">
-                <h:commandButton styleClass="btn btn-primary" value="Login" action="#{userBean.validateUserLogin}"/>
+                <h:commandButton styleClass="btn btn-primary" value="Register" action="#{userBean.RegisterAccount}"/>
             </div>
         </h:form>
     </div>
+
 </h:body>
 </html>

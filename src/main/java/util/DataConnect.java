@@ -2,17 +2,17 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class DataConnect {
 
     public static Connection getConnection(){
+        String dbURL = "jdbc:mysql://localhost:3306/clubweb?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";
+        String dbUser = "root";
+        String dbPwd = "password";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/clubweb?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC",
-                    "root",
-                    "password"
-            );
+            Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPwd);
             return conn;
         } catch (Exception e){
             System.out.println("DataConnect.getConnection() Error --> "+
@@ -27,4 +27,6 @@ public class DataConnect {
         } catch (Exception e){
         }
     }
+
+
 }

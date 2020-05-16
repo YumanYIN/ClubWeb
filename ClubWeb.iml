@@ -45,5 +45,7 @@
     <orderEntry type="library" exported="" scope="PROVIDED" name="GlassFish 5.0.1 - Transaction API (JSR 907)" level="application_server_libraries" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="GlassFish 5.0.1 - EJB" level="application_server_libraries" />
     <orderEntry type="library" name="mysql-connector-java-8.0.18" level="application" />
+    <orderEntry type="library" name="Maven: org.primefaces:primefaces:7.0" level="project" />
+    <orderEntry type="library" exported="" name="lib" level="application" />
   </component>
 </module>

@@ -7,23 +7,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <ui:insert name="metadata"/>
-<h:head>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-   <title>
-      Club Web
-   </title>
-</h:head>
+<ui:include src="head.xhtml" />
 <h:body>
-   <h:link outcome="welcome" value="PrimeFaces welcome page" />
-   <f:view>
-      <h:form>
-         <h:outputLabel for="greeter" value="Please tell me your name:"/>
-         <h:inputText id="greeter" value="#{greeter.name}">
-            <f:ajax event="keyup" render="text"/>
-         </h:inputText>
-      </h:form>
-      <h:outputText id="text" value="${greeter.response}"/>
-   </f:view>
+   <ui:include src="nav.xhtml" />
+   <div class="container">
+      <h1>Welcome to Club Web</h1>
+      <p>This is our home page.</p>
+
+   </div>
+
 </h:body>
 
 
