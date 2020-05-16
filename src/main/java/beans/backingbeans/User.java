@@ -3,8 +3,11 @@ package beans.backingbeans;
 public class User {
     private int userId;
     private String userName;
-    private String email;
     private String password;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String address;
 
     public int getUserId() {
         return userId;
@@ -37,4 +40,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
