@@ -21,10 +21,20 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="login.xhtml">Login</a>
+                    <h:form>
+                        <h:commandLink rendered="#{userBean.loggedIn}" action="#{userBean.logoutUser}" styleClass="nav-link" value="Logout"/>
+                    </h:form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.xhtml">Register</a>
+                    <h:form>
+                        <h:commandLink rendered="#{!userBean.loggedIn}" action="login.xhtml?faces-redirect=true" styleClass="nav-link" value="Login"/>
+                    </h:form>
+                </li>
+                <li class="nav-item">
+                    <h:form>
+                        <h:commandLink rendered="#{!userBean.loggedIn}" action="register.xhtml?faces-redirect=true" styleClass="nav-link" value="Register"/>
+                    </h:form>
+
                 </li>
             </ul>
         </div>

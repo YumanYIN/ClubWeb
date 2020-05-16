@@ -38,9 +38,28 @@ public class UserBean implements Serializable {
             session.setAttribute("username", user.getUserName());
             // keep session 30 minutes
             session.setMaxInactiveInterval(30*60); // unit is second, here means 30 minutes
-            return "welcome.xhtml";
+            return "welcome.xhtml?faces-redirect=true";
         }
         return "login.xhtml";
+    }
+
+    public boolean isLoggedIn() {
+        HttpSession session = SessionUtils.getSession();
+        if (session != null){
+            String username = (String) session.getAttribute("username");
+            if(username != null){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String logoutUser(){
+        HttpSession session = SessionUtils.getSession();
+        if (session != null){
+            session.invalidate();
+        }
+        return "index.xhtml?faces-redirect=true";
     }
 
     public User getUser() {
