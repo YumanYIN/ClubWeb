@@ -8,26 +8,39 @@
 <ui:include src="head.xhtml" />
 <h:body>
     <ui:include src="nav.xhtml" />
-    <div class="container">
-        <h3 class="text-center">User Login</h3>
-        <br />
-        <h:form styleClass="col-lg-6" id="loginForm">
-            <div class="form-group row">
-                <label class="col-sm-3">Username</label>
-                <div class="col-sm-9">
-                    <h:inputText styleClass="form-control" value="#{userBean.user.userName}"/>
+    <div class="min-vh-100 d-flex align-item-center" style="background: url('images/register-img.jpg');background-size:cover ">
+        <div class="container">
+            <div class="row" >
+                <div class="mb-4 d-flex justify-content-center"></div>
+                <div class="offset-lg-3 col-lg-6 col-12">
+                    <div class="mb-4 d-flex justify-content-center"></div>
+                    <div class="bg-dark p-4 p-lg-8 rounded-lg">
+                        <h:form id="loginForm">
+                            <h1 class="mb-2 text-white">Bienvenu</h1>
+                            <div class="form-group">
+                                <label>Username</label>
+                                <div>
+                                    <h:inputText styleClass="form-control" value="#{userBean.user.userName}"/>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label>Password</label>
+                                <div>
+                                    <h:inputSecret styleClass="form-control" value="#{userBean.user.password}"/>
+                                </div>
+                            </div>
+
+                            <h:commandButton styleClass="btn btn-primary btn-block" value="Login" action="#{userBean.validateUserLogin}"/>
+
+                            <p class="mt-3 mb-3 text-muted font-14">
+                                Don't have an account yet? <a href="/register.xhtml"> Sign up.</a>
+                            </p>
+                        </h:form>
+
+                    </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-sm-3">Password</label>
-                <div class="col-sm-9">
-                    <h:inputSecret styleClass="form-control" value="#{userBean.user.password}"/>
-                </div>
-            </div>
-            <div class="form-group row">
-                <h:commandButton styleClass="btn btn-primary" value="Login" action="#{userBean.validateUserLogin}"/>
-            </div>
-        </h:form>
+        </div>
     </div>
 </h:body>
 </html>
