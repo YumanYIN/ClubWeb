@@ -8,9 +8,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-public class AuthorizationFilter implements Filter {
+public class AuthFilter implements Filter {
 
-    public AuthorizationFilter(){}
+    public AuthFilter(){}
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -25,12 +25,10 @@ public class AuthorizationFilter implements Filter {
             HttpSession session = req.getSession(false);
 
             String reqURI = req.getRequestURI();
-            if (reqURI.indexOf("/login.xhtml") >= 0
-                    || (session != null && session.getAttribute("username") != null)
-                    || reqURI.contains("javax.faces.resource"))
+            if (session != null && session.getAttribute("username") != null)
                 filterChain.doFilter(request, response);
             else
-                resp.sendRedirect(req.getContextPath() + "/login.xhtml");
+                resp.sendRedirect( "/login.xhtml");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
