@@ -127,7 +127,7 @@ public class CommentDAO {
             ps.setString(5, comment.getDate());
             ps.setInt(6, comment.getNbLike());
             // set idComment (where)
-            ps.setInt(1, comment.getIdComment());
+            ps.setInt(7, comment.getIdComment());
 
             // update a comment
             int nbRowsInserted = ps.executeUpdate();

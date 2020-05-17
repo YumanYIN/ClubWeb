@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:a4j="http://xmlns.jcp.org/jsf/composite"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:include src="head.xhtml" />
@@ -85,6 +86,7 @@
                             <div class="card mt-n12 text-center mb-0">
 
                                 <ui:repeat value="#{commentListBean.listComment}" var="comment" >
+                                    <h:form>
                                     <div class="card-body border-top p-4">
                                         <div class="row">
                                             <div class="col-md-3">
@@ -107,13 +109,14 @@
                                                     <span><i class="fas fa-heart mr-2 text-danger"></i></span> <h:outputText value="#{comment.nbLike}" />
                                                 </span> <br/>
                                                 <span>
-                                                    <h:commandButton value="Aimer" action="#{commentBean.changeNbLike}" styleClass="btn btn-light text-danger">
+                                                    <h:commandButton render="refresh" value="Aimer" action="#{commentBean.changeNbLike}" styleClass="btn btn-light text-danger">
                                                         <f:param name="idComment" value="#{comment.idComment}" />
                                                     </h:commandButton>
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
+                                    </h:form>
                                 </ui:repeat>
 
 

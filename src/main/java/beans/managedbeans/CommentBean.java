@@ -38,11 +38,9 @@ public class CommentBean implements Serializable {
         Map<String,String> params = FacesContext.getCurrentInstance()
                 .getExternalContext().getRequestParameterMap();
         int idComment = Integer.parseInt(params.get("idComment"));
-        Comment comment = CommentDAO.searchById(
-                idComment
-        );
+        Comment comment = CommentDAO.searchById(idComment);
         assert comment != null;
-        comment.setNbLike(comment.getNbLike() + 1);
+        comment.addNbLike();
         if(CommentDAO.updateById(comment)){
             return "/comment.xhtml";
         }
