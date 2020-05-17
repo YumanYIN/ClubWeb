@@ -50,6 +50,35 @@ public class UserDAO {
             int nbRowsInserted = ps.executeUpdate();
             if (nbRowsInserted >0) {
                 System.out.println(nbRowsInserted + "rows inserted !");
+                return true;
+            }
+
+        }catch (SQLException ex){
+            System.out.println("Login error --> " + ex.getMessage());
+        } finally {
+            DataConnect.close(conn);
+        }
+        // if not insert user
+        return false;
+    }
+
+    public static boolean insertUser(String firstName, String lastName, String email){
+        Connection conn = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = DataConnect.getConnection();
+            String sql = "INSERT INTO `Users` (`firstName`, `lastName`, `email`) VALUES (?,?,?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, firstName);
+            ps.setString(2, lastName);
+            ps.setString(3, email);
+
+            // insert a user
+            int nbRowsInserted = ps.executeUpdate();
+            if (nbRowsInserted >0) {
+                System.out.println(nbRowsInserted + "rows inserted !");
+                return true;
             }
 
         }catch (SQLException ex){

@@ -25,7 +25,10 @@ public class UserBean implements Serializable {
                 user.getUserName(),
                 user.getPassword(),
                 user.getEmail());
-        return null;
+        if(registered){
+            return "login.xhtml?faces-redirect=true";
+        }
+        return "register.xhtml";
     }
 
     public String validateUserLogin () {

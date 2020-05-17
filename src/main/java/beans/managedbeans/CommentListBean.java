@@ -4,6 +4,7 @@ import beans.backingbeans.Comment;
 import beans.backingbeans.User;
 import dao.CommentDAO;
 
+import javax.faces.bean.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -16,23 +17,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Named
+@ManagedBean
 @RequestScoped
 public class CommentListBean implements Serializable {
 
-    private List<Comment> listComment;
+    private List<Comment> listComment = new ArrayList<Comment>();
 
-    @PostConstruct
-    public void init(){
-        //listComment = CommentDAO.getListOfAll();
-        String txt = "J'aime beaucoup votre club, j'ai participé au trek en Bretagne en mars, je suis très détendu, j'espère y retourner!";
-        Date dateNow = new Date();
-        //listComment.add(new Comment(100, new User(), txt, dateNow, 3));
-        listComment = CommentDAO.getListOfAll();
+    public CommentListBean(){
+        this.listComment = CommentDAO.getListOfAll();
     }
 
     public List<Comment> getListComment(){
         return listComment;
     }
 
+    public void setListComment(List<Comment> listComment) {
+        this.listComment = listComment;
+    }
 }

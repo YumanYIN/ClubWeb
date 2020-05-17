@@ -41,26 +41,26 @@
                             <h:form class="form-row">
                                 <div class="from-group col-md-6 col-12 mb-3">
                                     <label for="fname" class="sr-only"> Prénom</label>
-                                    <h:inputText class="form-control" id="fname" p:placeholder="Prénom" name="fname">
+                                    <h:inputText value="#{commentBean.comment.firstName}" class="form-control" id="fname" p:placeholder="Prénom" name="fname">
 
                                     </h:inputText>
                                 </div>
                                 <div class="from-group col-md-6 col-12 mb-3">
                                     <label for="lname" class="sr-only"> Nom</label>
-                                    <h:inputText class="form-control" id="lname" p:placeholder="Nom" name="lname" />
+                                    <h:inputText value="#{commentBean.comment.lastName}" class="form-control" id="lname" p:placeholder="Nom" name="lname" />
                                 </div>
                                 <div class="from-group col-12 mb-3">
                                     <label for="email" class="sr-only"> E-mail</label>
-                                    <h:inputText p:type="email" class="form-control" id="email" p:placeholder="E-mail" name="email">
+                                    <h:inputText p:type="email" value="#{commentBean.comment.email}" class="form-control" id="email" p:placeholder="E-mail" name="email">
                                         <f:validateRequired />
                                     </h:inputText>
                                 </div>
                                 <div class="form-group col-12 mb-3">
                                     <label class="sr-only">Commentaire</label>
-                                    <h:inputTextarea class="form-control" rows="5" cols="7" p:placeholder="Votre opinion..."/>
+                                    <h:inputTextarea value="#{commentBean.comment.text}" class="form-control" rows="5" cols="7" p:placeholder="Votre opinion..."/>
                                 </div>
                                 <div class="col-12">
-                                    <h:commandButton class="btn btn-primary btn-block" value="Soumettre" />
+                                    <h:commandButton class="btn btn-primary btn-block" value="Soumettre" action="#{commentBean.addComment}"/>
                                 </div>
                             </h:form>
                         </div>
@@ -81,28 +81,45 @@
                         <h4 class="mb-4">Top Commentaires</h4>
                     </div>
                     <div class="tab-content">
-                        <div class="card mt-n12 text-center mb-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    J'aime beaucoup votre club, j'ai participé au trek en Bretagne en mars, je suis très détendu, j'espère y retourner!
-                                </div>
-                                <h:dataTable value="#{commentListBean.listComment}" var="comment" >
-                                    <h:column>
-                                        <h:outputText value="#{comment.author.firstName}" />
-                                    </h:column>
-                                    <h:column>
-                                        <h:outputText value="#{comment.text}" />
-                                    </h:column>
-                                    <h:column>
-                                        <h:outputText value="#{comment.date}" />
-                                    </h:column>
-                                    <h:column>
-                                        <h:outputText value="#{comment.nbLike}" />
-                                    </h:column>
-                                </h:dataTable>
+                        <div class="tab-pane fade show active">
+                            <div class="card mt-n12 text-center mb-0">
+
+                                <ui:repeat value="#{commentListBean.listComment}" var="comment" >
+                                    <div class="card-body border-top p-4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <h5 class="mb-1 text-danger">
+                                                    <h:outputText value="#{comment.firstName}" />
+                                                </h5><br/>
+                                                <h:outputText value="#{comment.date.substring(0,10)}" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <p class="mb-0">
+                                                            <h:outputText value="#{comment.text}" />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span class="text-dark font-weight-bold">
+                                                    <span><i class="fas fa-heart mr-2 text-danger"></i></span> <h:outputText value="#{comment.nbLike}" />
+                                                </span> <br/>
+                                                <span>
+                                                    <h:commandButton value="Aimer" action="#{commentBean.changeNbLike}" styleClass="btn btn-light text-danger">
+                                                        <f:param name="idComment" value="#{comment.idComment}" />
+                                                    </h:commandButton>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+
 
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
