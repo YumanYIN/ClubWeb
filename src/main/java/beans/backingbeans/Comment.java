@@ -7,6 +7,7 @@ public class Comment {
     private User author;
     private String text;
     private Date date;
+    private int nbLike = 0; // number of likes
 
     public int getIdComment() {
         return idComment;
@@ -38,5 +39,13 @@ public class Comment {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getNbLike() {
+        return nbLike;
+    }
+
+    public void setNbLike(int nbLike) {
+        this.nbLike = nbLike;
     }
 }

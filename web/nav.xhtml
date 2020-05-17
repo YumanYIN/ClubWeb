@@ -23,23 +23,30 @@
                             <a class="nav-link" href="/comment.xhtml">Commentaires <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
-
+                        <!-- Logout -->
                         <div class="header-btn m-1">
                             <h:form>
-                                <h:commandLink rendered="#{userBean.loggedIn}" action="#{userBean.logoutUser}" styleClass="btn btn-primary btn-sm" value="Déconnecter"/>
+                                <h:commandButton rendered="#{userBean.loggedIn}" action="#{userBean.logoutUser}" styleClass="btn btn-primary btn-sm" value="Déconnecter"/>
                             </h:form>
                         </div>
+                        <!-- Login -->
                         <div class="header-btn m-1">
                             <h:form>
-                                <h:commandLink rendered="#{!userBean.loggedIn}" action="/login.xhtml?faces-redirect=true" styleClass="btn btn-primary btn-sm" value="Se connecter"/>
+                                <h:commandButton rendered="#{!userBean.loggedIn}" action="/login.xhtml?faces-redirect=true" styleClass="btn btn-primary btn-sm" value="Se connecter"/>
                             </h:form>
                         </div>
+                        <!-- Register -->
                         <div class="header-btn m-1">
                             <h:form>
-                                <h:commandLink rendered="#{!userBean.loggedIn}" action="/register.xhtml?faces-redirect=true" styleClass="btn btn-primary btn-sm" value="S'inscrir"/>
+                                <h:commandButton rendered="#{!userBean.loggedIn}" action="/register.xhtml?faces-redirect=true" styleClass="btn btn-primary btn-sm" value="S'inscrir"/>
                             </h:form>
                         </div>
-
+                        <!-- Username -->
+                        <div class="header-btn m-1">
+                            <h:form>
+                                <h:commandButton rendered="#{userBean.loggedIn}" action="#" styleClass="btn btn-light btn-sm" value="#{sessionScope.username}"/>
+                            </h:form>
+                        </div>
                 </div>
             </nav>
         </div>
