@@ -10,6 +10,19 @@ public class User {
     private String address;
     private String role; // member or visiter
 
+    public User(){}
+
+    public User (int userId, String userName, String password, String email, String firstName, String lastName, String address, String role){
+        this.setRole(role);
+        this.setPassword(password);
+        this.setUserName(userName);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setEmail(email);
+        this.setAddress(address);
+        this.setUserId(userId);
+    }
+
     public int getUserId() {
         return userId;
     }

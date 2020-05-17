@@ -83,26 +83,23 @@
                     <div class="tab-content">
                         <div class="card mt-n12 text-center mb-0">
                             <div class="card-body">
-                                <ui:repeat var="aComment" value="#{commentBean.ListOfAll}">
-                                    <div class="row">
-                                        <!-- Text of comment -->
-                                        <div class="col-md-9">
-                                            <div class="media-body">
-                                                <h5 class="mb-1"></h5>
-                                                <p class="mb-0">
-                                                    J'aime beaucoup votre club, j'ai participé au trek en Bretagne en mars, je suis très détendu, j'espère y retourner!
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!-- Date of comment -->
-                                        <div class="col-md-3">
-                                        <span class="text-dark font-weight-bold">
-                                            15 mai 2020
-                                        </span>
-                                        </div>
-
-                                    </div>
-                                </ui:repeat>
+                                <div class="row">
+                                    J'aime beaucoup votre club, j'ai participé au trek en Bretagne en mars, je suis très détendu, j'espère y retourner!
+                                </div>
+                                <h:dataTable value="#{commentListBean.listComment}" var="comment" >
+                                    <h:column>
+                                        <h:outputText value="#{comment.author.firstName}" />
+                                    </h:column>
+                                    <h:column>
+                                        <h:outputText value="#{comment.text}" />
+                                    </h:column>
+                                    <h:column>
+                                        <h:outputText value="#{comment.date}" />
+                                    </h:column>
+                                    <h:column>
+                                        <h:outputText value="#{comment.nbLike}" />
+                                    </h:column>
+                                </h:dataTable>
 
                             </div>
                         </div>

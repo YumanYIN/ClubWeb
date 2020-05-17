@@ -1,5 +1,6 @@
 package dao;
 
+import beans.backingbeans.User;
 import util.DataConnect;
 
 import java.sql.Connection;
@@ -58,5 +59,37 @@ public class UserDAO {
         }
         // if not insert user
         return false;
+    }
+
+    public User getUserById(int idUser){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        User user = new User();
+        try {
+            conn = DataConnect.getConnection();
+            String sql = "SELECT FROM `Users` WHERE userid = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, idUser);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                user.setUserId(rs.getInt("userid"));
+                user.setUserName(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setEmail(rs.getString("email"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                user.setAddress(rs.getString("address"));
+                user.setRole(rs.getString("role"));
+            }
+            return user;
+
+        }catch (SQLException ex){
+            System.out.println("Login error --> " + ex.getMessage());
+        } finally {
+            DataConnect.close(conn);
+        }
+        // if not insert user
+        return null;
     }
 }

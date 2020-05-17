@@ -6,8 +6,20 @@ public class Comment {
     private int idComment;
     private User author;
     private String text;
-    private Date date;
+    private Date date ;
     private int nbLike = 0; // number of likes
+
+    public Comment(){
+
+    }
+
+    public Comment(int idComment, User user, String text, Date date, int nbLike){
+        this.setAuthor(user);
+        this.setNbLike(nbLike);
+        this.setText(text);
+        this.setDate(date);
+        this.setIdComment(idComment);
+    }
 
     public int getIdComment() {
         return idComment;
