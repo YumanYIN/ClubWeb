@@ -1,9 +1,12 @@
 package beans.backingbeans;
 
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Entity
 public class Comment {
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idComment;
     private String firstName;
     private String lastName;

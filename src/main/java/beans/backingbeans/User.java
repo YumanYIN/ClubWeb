@@ -1,6 +1,11 @@
 package beans.backingbeans;
 
+import javax.persistence.*;
+
+@Entity
 public class User {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int userId;
     private String userName;
     private String password;
@@ -12,7 +17,7 @@ public class User {
 
     public User(){}
 
-    public User (int userId, String userName, String password, String email, String firstName, String lastName, String address, String role){
+    public User(String userName, String password, String email, String firstName, String lastName, String address, String role){
         this.setRole(role);
         this.setPassword(password);
         this.setUserName(userName);
@@ -20,7 +25,7 @@ public class User {
         this.setLastName(lastName);
         this.setEmail(email);
         this.setAddress(address);
-        this.setUserId(userId);
+        //this.setUserId(userId);
     }
 
     public int getUserId() {
