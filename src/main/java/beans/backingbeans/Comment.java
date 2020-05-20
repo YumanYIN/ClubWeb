@@ -6,11 +6,16 @@ import java.util.Date;
 
 @Entity
 public class Comment {
-    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int idComment;
     private String firstName;
     private String lastName;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String text;
     private String date;
     private int nbLike; // number of likes
@@ -20,7 +25,6 @@ public class Comment {
         SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
         sdf.applyPattern("yyyy-MM-dd HH:mm:ss");
         this.date = sdf.format(dateNow);
-
         nbLike = 0;
     }
 

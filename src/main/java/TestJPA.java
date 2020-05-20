@@ -25,11 +25,11 @@ public class TestJPA {
             entityManager.persist( newUser );
 
             System.out.println( "- Modification d'un utilisateur --------------" );
-            newUser.setUserName("userNewName");
+            newUser.setUserName("userNewName3");
             entityManager.persist(newUser);
 
             //System.out.println( "- Suppression d'un utilisateur ---------------" );
-            //entityManager.remove( newUser );
+            entityManager.remove( newUser );
 
             trans.commit();
 

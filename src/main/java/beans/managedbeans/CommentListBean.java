@@ -3,6 +3,7 @@ package beans.managedbeans;
 import beans.backingbeans.Comment;
 import beans.backingbeans.User;
 import dao.CommentDAO;
+import dao.CommentPersistence;
 
 import javax.faces.bean.ManagedBean;
 import javax.annotation.PostConstruct;
@@ -24,7 +25,8 @@ public class CommentListBean implements Serializable {
     private List<Comment> listComment = new ArrayList<Comment>();
 
     public CommentListBean(){
-        this.listComment = CommentDAO.getListOfAll();
+        //this.listComment = CommentDAO.getListOfAll();
+        this.listComment = CommentPersistence.getListOfAll();
     }
 
     public List<Comment> getListComment(){

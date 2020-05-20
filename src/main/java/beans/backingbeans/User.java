@@ -5,9 +5,13 @@ import javax.persistence.*;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int userId;
+
+    @Column(nullable = false, unique = true, length = 100)
     private String userName;
+
+    @Column(nullable = false)
     private String password;
     private String email;
     private String firstName;

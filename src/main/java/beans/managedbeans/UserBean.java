@@ -2,7 +2,7 @@ package beans.managedbeans;
 
 import beans.backingbeans.User;
 import dao.UserDAO;
-import org.w3c.dom.UserDataHandler;
+import dao.UserMyPersistence;
 import util.SessionUtils;
 
 import javax.faces.bean.ManagedBean;
@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class UserBean implements Serializable {
 
     private User user;
+    private UserMyPersistence userPersistence;
 
     public UserBean() {
         user = new User();
@@ -32,7 +33,8 @@ public class UserBean implements Serializable {
     }
 
     public String validateUserLogin () {
-        boolean valid = UserDAO.validateAccount(
+        userPersistence = new UserMyPersistence();
+        boolean valid = userPersistence.validateAccount(
                 user.getUserName(),
                 user.getPassword()
         );
