@@ -1,8 +1,7 @@
 package beans.managedbeans;
 
 import beans.backingbeans.User;
-import dao.UserDAO;
-import dao.UserMyPersistence;
+import dao.UserPersistence;
 import util.SessionUtils;
 
 import javax.faces.bean.ManagedBean;
@@ -15,14 +14,15 @@ import java.io.Serializable;
 public class UserBean implements Serializable {
 
     private User user;
-    private UserMyPersistence userPersistence;
+    private UserPersistence userPersistence;
 
     public UserBean() {
         user = new User();
     }
 
     public String RegisterAccount() {
-        boolean registered = UserDAO.registerUser(
+        userPersistence = new UserPersistence();
+        boolean registered = userPersistence.registerUser(
                 user.getUserName(),
                 user.getPassword(),
                 user.getEmail());
@@ -33,7 +33,7 @@ public class UserBean implements Serializable {
     }
 
     public String validateUserLogin () {
-        userPersistence = new UserMyPersistence();
+        userPersistence = new UserPersistence();
         boolean valid = userPersistence.validateAccount(
                 user.getUserName(),
                 user.getPassword()

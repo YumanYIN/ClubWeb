@@ -6,7 +6,6 @@ import java.util.List;
 public class MyPersistence<T> {
     private T t;
 
-
     private EntityManagerFactory factory = Persistence.createEntityManagerFactory("clubweb");
     protected EntityManager em = factory.createEntityManager();
 

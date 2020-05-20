@@ -21,10 +21,12 @@ public class Comment {
     private int nbLike; // number of likes
 
     public Comment(){
+        // date format
         Date dateNow = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
         sdf.applyPattern("yyyy-MM-dd HH:mm:ss");
         this.date = sdf.format(dateNow);
+        // number of likes
         nbLike = 0;
     }
 

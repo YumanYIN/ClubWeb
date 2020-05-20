@@ -2,6 +2,7 @@ package beans.managedbeans;
 
 import beans.backingbeans.Comment;
 import dao.CommentDAO;
+import dao.CommentPersistence;
 
 import javax.faces.bean.ManagedBean;
 import javax.enterprise.context.RequestScoped;
@@ -23,13 +24,7 @@ public class CommentBean implements Serializable {
     }
 
     public String addComment(){
-        boolean inserted = CommentDAO.insertComment(
-                comment.getFirstName(),
-                comment.getLastName(),
-                comment.getEmail(),
-                comment.getText(),
-                comment.getDate()
-        );
+        boolean inserted = CommentPersistence.insertComment(comment);
         if (inserted) return "/comment.xhtml";
         return "/comment.xhtml";
     }

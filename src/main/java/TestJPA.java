@@ -29,7 +29,7 @@ public class TestJPA {
             entityManager.persist(newUser);
 
             //System.out.println( "- Suppression d'un utilisateur ---------------" );
-            entityManager.remove( newUser );
+            //entityManager.remove( newUser );
 
             trans.commit();
 

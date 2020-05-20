@@ -19,7 +19,12 @@ public class User {
     private String address;
     private String role; // member or visiter
 
-    public User(){}
+    public User(){
+        this.firstName = "firstname";
+        this.lastName = "lastName";
+        this.address = "address";
+        this.role = "visiter";
+    }
 
     public User(String userName, String password, String email, String firstName, String lastName, String address, String role){
         this.setRole(role);
