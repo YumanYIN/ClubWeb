@@ -1,6 +1,9 @@
 package dao;
 
 import beans.backingbeans.User;
+import org.hibernate.HibernateException;
+
+import javax.persistence.NoResultException;
 
 public class UserPersistence extends MyPersistence<User> {
     private User user;
@@ -11,9 +14,17 @@ public class UserPersistence extends MyPersistence<User> {
     public boolean validateAccount(String userName, String password){
         em.getTransaction().begin();
         //user = em.find(User.class, userName);
-        user = em.createQuery(
-                "SELECT u from User u WHERE u.userName = :userName", User.class).
-                setParameter("userName", userName).getSingleResult();
+        try {
+            user = em.createQuery(
+                    "SELECT u from User u WHERE u.userName = :userName", User.class).
+                    setParameter("userName", userName).
+                    getSingleResult();
+        }catch (NoResultException nre){
+            // Ignore this because as per the logic this is ok!
+        }
+        if (user == null){
+            return false;
+        }
         return user.getPassword().equals(password);
     }
 
@@ -32,9 +43,10 @@ public class UserPersistence extends MyPersistence<User> {
         return false;
     }
 
-    public void edit(int id, String userName){
+    public void editUserName(int id, String userName){
         em.getTransaction().begin();
         user = super.queryByIndex(User.class, id);
+        // modify the userName
         user.setUserName(userName);
         em.getTransaction().commit();
     }

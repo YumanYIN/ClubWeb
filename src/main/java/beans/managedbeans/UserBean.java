@@ -45,7 +45,7 @@ public class UserBean implements Serializable {
             session.setMaxInactiveInterval(30*60); // unit is second, here means 30 minutes
             return "/index.xhtml?faces-redirect=true";
         }
-        return "login.xhtml";
+        return "/login.xhtml";
     }
 
     public boolean isLoggedIn() {
