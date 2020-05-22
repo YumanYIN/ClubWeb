@@ -41,7 +41,7 @@ public class CommentBean implements Serializable {
         assert comment != null;
         int nb = comment.getNbLike();
         comment.setNbLike(nb + 1);
-        commentPersistence.save(comment);
+        commentPersistence.update(comment);
         return "/comment.xhtml?faces-redirect=true";
 
     }
