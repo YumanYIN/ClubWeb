@@ -1,7 +1,6 @@
 package beans.managedbeans;
 
 import beans.backingbeans.Comment;
-import dao.CommentDAO;
 import dao.CommentPersistence;
 
 import javax.faces.bean.ManagedBean;
@@ -18,28 +17,33 @@ import java.util.Map;
 public class CommentBean implements Serializable {
 
     private Comment comment;
+    private CommentPersistence commentPersistence;
 
     public CommentBean(){
         comment = new Comment();
     }
 
     public String addComment(){
-        boolean inserted = CommentPersistence.insertComment(comment);
-        if (inserted) return "/comment.xhtml";
-        return "/comment.xhtml";
+        commentPersistence = new CommentPersistence();
+        boolean inserted = commentPersistence.insertComment(comment);
+        if (inserted) return "comment.xhtml?faces-redirect=true";
+        return "comment.xhtml";
     }
 
     public String changeNbLike(){
+        // get param from FacesContext
         Map<String,String> params = FacesContext.getCurrentInstance()
                 .getExternalContext().getRequestParameterMap();
         int idComment = Integer.parseInt(params.get("idComment"));
-        Comment comment = CommentDAO.searchById(idComment);
+        // change and save
+        commentPersistence = new CommentPersistence();
+        Comment comment = commentPersistence.searchById(idComment);
         assert comment != null;
-        comment.addNbLike();
-        if(CommentDAO.updateById(comment)){
-            return "/comment.xhtml";
-        }
-        return "/comment.xhtml";
+        int nb = comment.getNbLike();
+        comment.setNbLike(nb + 1);
+        commentPersistence.save(comment);
+        return "/comment.xhtml?faces-redirect=true";
+
     }
 
     public Comment getComment() {

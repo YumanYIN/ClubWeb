@@ -1,29 +1,42 @@
 package dao;
 
 import beans.backingbeans.Comment;
-import com.mysql.cj.jdbc.MysqlDataSource;
 
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import java.util.List;
 
 public class CommentPersistence extends MyPersistence<Comment> {
-    private Comment comment;
+    protected Comment comment;
     //private MyPersistence persistence = new MyPersistence();
 
-    public CommentPersistence(){}
-
-    public static List<Comment> getListOfAll(){
-        return new MyPersistence<Comment>().findAll(Comment.class);
+    public CommentPersistence(){
+        super(Comment.class);
     }
 
-    public static boolean insertComment(Comment comment) {
+    public static List<Comment> getListOfAll(){
+        return new MyPersistence<Comment>(Comment.class).getAll();
+    }
+
+    public boolean insertComment(Comment comment) {
         try {
-            MyPersistence persistence = new MyPersistence();
+            MyPersistence persistence = new MyPersistence(Comment.class);
             persistence.addT(comment);
             return true;
         }catch (PersistenceException e){
             System.out.println("Insert Comment Error --> " + e.getMessage());
         }
         return false;
+    }
+
+    public Comment searchById(int idComment){
+        try {
+            return getSession().createQuery("FROM Comment c where c.idComment = :idComment", Comment.class).
+                    setParameter("idComment", idComment).
+                    getSingleResult();
+        }catch (NoResultException e){
+            System.out.println("Search Comment Error --> " + e.getMessage());
+        }
+        return null;
     }
 }

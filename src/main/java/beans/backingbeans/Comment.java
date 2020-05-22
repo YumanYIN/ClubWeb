@@ -40,12 +40,6 @@ public class Comment {
         this.setIdComment(idComment);
     }
 
-    public void addNbLike(){
-        this.nbLike += 1;
-    }
-
-    public void subNbLike(){this.nbLike -= 1;}
-
     public String getFirstName() {
         return firstName;
     }

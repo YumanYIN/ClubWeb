@@ -2,7 +2,6 @@ package beans.managedbeans;
 
 import beans.backingbeans.Comment;
 import beans.backingbeans.User;
-import dao.CommentDAO;
 import dao.CommentPersistence;
 
 import javax.faces.bean.ManagedBean;
