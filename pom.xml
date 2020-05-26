@@ -57,20 +57,26 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.18</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.glassfish.main.common/glassfish-api -->
-        <dependency>
-            <groupId>org.glassfish.main.common</groupId>
-            <artifactId>glassfish-api</artifactId>
-            <version>5.0.1</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.glassfish/javax.faces -->
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
             <version>2.4.0</version>
         </dependency>
-
-
+        <!-- https://mvnrepository.com/artifact/javax.enterprise/cdi-api -->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.ejb/ejb-api -->
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
+            <version>3.0</version>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 
