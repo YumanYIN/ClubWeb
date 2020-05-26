@@ -25,7 +25,9 @@ public class CommentListBean implements Serializable {
 
     public CommentListBean(){
         //this.listComment = CommentDAO.getListOfAll();
-        this.listComment = CommentPersistence.getListOfAll();
+        //this.listComment = CommentPersistence.getListOfAll();
+
+        this.listComment = new CommentPersistence().getListOrder();
     }
 
     public List<Comment> getListComment(){

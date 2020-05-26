@@ -10,13 +10,11 @@ public class User {
     private int userId;
 
     @Column(nullable = false, unique = true, length = 100)
-    @NotNull(message = "Nom d'utilisateur est nécessaire.")
     private String userName;
 
     @Column(nullable = false)
-    @NotNull(message = "Mot de passe est nécessaire.")
     private String password;
-    @NotNull(message = "E-mail est nécessaire.")
+
     private String email;
     private String firstName;
     private String lastName;

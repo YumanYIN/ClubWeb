@@ -20,7 +20,6 @@
             <version>5.1.0.Final</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <build>

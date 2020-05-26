@@ -90,6 +90,7 @@ public class MyPersistence<T> implements Serializable{
         return getSession().createQuery("FROM " + className, clazz).list();
     }
 
+
     public boolean isEmpty() {
         System.out.println("[DEBUG] isEmpty " + tableName);
         return ((BigInteger) getSession().createSQLQuery("SELECT EXISTS (SELECT NULL FROM " + tableName + ")").uniqueResult()).intValue() == 0;

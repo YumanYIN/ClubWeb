@@ -31,7 +31,7 @@ public class UserPersistence extends MyPersistence<User> {
         User user = new User();
         // add a new user in DB
         try {
-            //persistence.addT(user);
+            // verify if the username exist in DB
             if ( getUserByName(userName) == null )
             {
                 user.setUserName(userName);

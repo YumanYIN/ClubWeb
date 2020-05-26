@@ -21,29 +21,33 @@ public class UserBean implements Serializable {
     }
 
     public String RegisterAccount() {
-        userPersistence = new UserPersistence();
-        boolean registered = userPersistence.registerUser(
-                user.getUserName(),
-                user.getPassword(),
-                user.getEmail());
-        if(registered){
-            return "login.xhtml?faces-redirect=true";
+        if (user.getUserName() != null && user.getEmail() == null && user.getPassword() == null){
+            userPersistence = new UserPersistence();
+            boolean registered = userPersistence.registerUser(
+                    user.getUserName(),
+                    user.getPassword(),
+                    user.getEmail());
+            if(registered){
+                return "login.xhtml?faces-redirect=true";
+            }
         }
         return "register.xhtml";
     }
 
     public String validateUserLogin () {
         userPersistence = new UserPersistence();
-        boolean valid = userPersistence.validateAccount(
-                user.getUserName(),
-                user.getPassword()
-        );
-        if (valid) {
-            HttpSession session = SessionUtils.getSession();
-            session.setAttribute("username", user.getUserName());
-            // keep session 30 minutes
-            session.setMaxInactiveInterval(30*60); // unit is second, here means 30 minutes
-            return "/index.xhtml?faces-redirect=true";
+        if (user.getUserName() != null && user.getPassword() != null){
+            boolean valid = userPersistence.validateAccount(
+                    user.getUserName(),
+                    user.getPassword()
+            );
+            if (valid) {
+                HttpSession session = SessionUtils.getSession();
+                session.setAttribute("username", user.getUserName());
+                // keep session 30 minutes
+                session.setMaxInactiveInterval(30*60); // unit is second, here means 30 minutes
+                return "/index.xhtml?faces-redirect=true";
+            }
         }
         return "/login.xhtml";
     }

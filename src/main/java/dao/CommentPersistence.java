@@ -18,6 +18,16 @@ public class CommentPersistence extends MyPersistence<Comment> {
         return new MyPersistence<Comment>(Comment.class).getAll();
     }
 
+    public List<Comment> getListOrder(){
+        try{
+            return getSession().createQuery("FROM Comment c ORDER BY c.nbLike DESC ", Comment.class).list();
+        }catch (NoResultException e){
+            System.out.println("Search Comment Error --> " + e.getMessage());
+        }
+        return null;
+    }
+
+
     public boolean insertComment(Comment comment) {
         try {
             MyPersistence persistence = new MyPersistence(Comment.class);

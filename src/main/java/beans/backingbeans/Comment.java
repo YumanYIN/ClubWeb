@@ -23,7 +23,7 @@ public class Comment {
     public Comment(){
         // date format
         Date dateNow = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
+        SimpleDateFormat sdf = new SimpleDateFormat();
         sdf.applyPattern("yyyy-MM-dd HH:mm:ss");
         this.date = sdf.format(dateNow);
         // number of likes
