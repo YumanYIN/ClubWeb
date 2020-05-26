@@ -63,6 +63,13 @@
             <artifactId>glassfish-api</artifactId>
             <version>5.0.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.glassfish/javax.faces -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
 
 
     </dependencies>
