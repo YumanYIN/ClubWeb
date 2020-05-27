@@ -23,10 +23,11 @@ public class CommentListBean implements Serializable {
 
     private List<Comment> listComment = new ArrayList<Comment>();
 
+    /**
+     * Get list of comment by order DESC
+     */
     public CommentListBean(){
-        //this.listComment = CommentDAO.getListOfAll();
         //this.listComment = CommentPersistence.getListOfAll();
-
         this.listComment = new CommentPersistence().getListOrder();
     }
 

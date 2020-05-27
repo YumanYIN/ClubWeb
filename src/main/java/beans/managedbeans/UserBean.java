@@ -21,7 +21,7 @@ public class UserBean implements Serializable {
     }
 
     public String RegisterAccount() {
-        if (user.getUserName() != null && user.getEmail() == null && user.getPassword() == null){
+        if (user.getUserName() != null && user.getEmail() != null && user.getPassword() != null){
             userPersistence = new UserPersistence();
             boolean registered = userPersistence.registerUser(
                     user.getUserName(),
